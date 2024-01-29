@@ -1,0 +1,497 @@
+:root,
+:root.light {
+  --white: rgb(254, 254, 254);
+  --white-ice: rgb(246, 248, 255);
+  --light-grayish-blue: rgb(105, 124, 154);
+  --grayish-blue: rgb(75, 106, 155);
+  --dark-grayish-blue: rgb(43, 52, 66);
+  --blue: rgb(0, 121, 255);
+  --red: rgb(247, 70, 70, 1);
+  --hover-toggle-btn: rgba(34, 39, 49, 1);
+  --blue-hover: rgba(96, 171, 255, 1) ;
+}
+
+:root.dark {
+  --white: rgb(30, 42, 71);
+  --white-ice: rgb(20, 29, 47);
+  --blue: rgb(0, 121, 255);
+  --grayish-blue: rgb(255, 255, 255);
+  --light-grayish-blue: rgb(255, 255, 255);
+  --dark-grayish-blue: rgb(255, 255, 255);
+  --hover-toggle-btn: rgba(144, 164, 212, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --white: rgb(30, 42, 71);
+    --white-ice: rgb(20, 29, 47);
+    --blue: rgb(0, 121, 255);
+    --grayish-blue: rgb(255, 255, 255);
+    --dark-grayish-blue: rgb(255, 255, 255);
+    --hover-toggle-btn: rgba(144, 164, 212, 1);
+    --light-grayish-blue: rgb(255, 255, 255);
+  }
+}
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  color: rgb(255, 255, 255);
+  transition: background-color 0.3s ease;
+}
+@media screen and (min-width: 998px) {
+  button {
+    cursor: pointer;
+  }
+  button:hover:not(#light-dark) {
+    background-color: var(--blue-hover);
+  }
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: "Space Mono", monospace;
+  overflow-y: hidden;
+  position: relative;
+  display: grid;
+  place-items: start center;
+  font-weight: 400;
+}
+@media screen and (min-width: 998px) {
+  body {
+    place-items: center;
+  }
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.bg-ice {
+  background-color: var(--white-ice);
+}
+
+.clr-white {
+  color: var(--white);
+}
+
+.clr-blue {
+  color: var(--blue);
+}
+
+.bg-blue {
+  background-color: var(--blue);
+}
+
+.clr-red {
+  color: var(--red);
+}
+
+.clr-light-grayish-blue {
+  color: var(--light-grayish-blue);
+}
+
+.clr-dark-blue {
+  color: var(--dark-grayish-blue);
+}
+
+.clr-grayish-blue {
+  color: var(--grayish-blue);
+}
+
+.clr-gray-toggle {
+  color: var(--gray-toggle);
+}
+
+.b-radius-10 {
+  border-radius: 0.625rem;
+}
+
+.b-radius-15 {
+  border-radius: 0.9375rem;
+}
+
+.fw-reg {
+  font-weight: 400;
+}
+
+.fw-bld {
+  font-weight: 700;
+}
+
+.opacity {
+  opacity: 0.75;
+}
+
+#profile-pic {
+  border-radius: 50%;
+}
+
+h1 {
+  font-size: clamp(1rem, 0.0635rem + 3.2573vw, 1.625rem);
+}
+
+h2 {
+  font-size: clamp(0.8125rem, 0.3053rem + 1.4493vw, 1rem);
+}
+
+h3 {
+  font-size: clamp(0.6875rem, 0.5002rem + 0.6515vw, 0.8125rem);
+}
+
+.logotype {
+  font-size: 1.625rem;
+}
+
+#light-dark {
+  font-size: 0.8125rem;
+  letter-spacing: 2.5px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+#light-dark > svg path {
+  transition: fill 0.3s ease;
+}
+#light-dark:hover {
+  color: var(--hover-toggle-btn);
+}
+#light-dark:hover > svg path {
+  fill: #222731;
+}
+#light-dark:hover > #sun path {
+  fill: #90A4D4;
+}
+
+input,
+::placeholder {
+  font-size: clamp(0.8125rem, 0.3443rem + 1.6287vw, 1.125rem);
+  background: none;
+}
+
+::placeholder {
+  color: var(--grayish-blue);
+  opacity: 1;
+}
+
+#bio,
+input {
+  line-height: 1.5rem;
+}
+
+#bio,
+#iscription,
+.info-user {
+  font-size: clamp(0.8125rem, 0.6252rem + 0.6515vw, 0.9375rem);
+}
+
+.numb-count {
+  font-size: clamp(1rem, 0.4381rem + 1.9544vw, 1.375rem);
+}
+
+#error-msg {
+  font-size: 0.9375rem;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: calc(6rem + 5vw);
+}
+@media screen and (min-width: 998px) {
+  #error-msg {
+    right: 8rem;
+  }
+}
+
+.profile-pic-box img {
+  width: clamp(4.375rem, -1.1259rem + 17.603vw, 7.3125rem);
+}
+
+button:not(#light-dark) {
+  padding-block: 0.75rem 0.8125rem;
+  padding-inline: 1rem;
+}
+button:not(#light-dark):focus-visible {
+  outline: 2px solid var(--red);
+}
+@media screen and (min-width: 767px) {
+  button:not(#light-dark) {
+    padding-inline: 1.5rem;
+    margin-inline-start: auto;
+  }
+}
+
+input {
+  border: 0;
+}
+input:focus {
+  outline: 0;
+}
+
+.container {
+  --padding: 3rem;
+  width: min(100% - var(--padding), 45.625rem);
+  padding-block-start: 2rem;
+}
+.container .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
+.container .header .color-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.container .header .color-mode #sun {
+  display: none;
+}
+.container .searchbar {
+  margin-block: 2.1875rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5625rem;
+  padding-block: 0.40625rem 0.46875rem;
+  padding-inline: 1rem 0.3rem;
+  justify-content: space-between;
+  position: relative;
+}
+.container .searchbar input {
+  width: 11.5rem;
+}
+.container .container-main {
+  padding: 2rem 1.5rem 3.125rem 1.5rem;
+  text-align: left;
+}
+.container .container-main > :first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  justify-content: start;
+}
+.container .container-main > :first-child #iscription {
+  margin-block-start: 0.375rem;
+}
+.container .container-main #bio {
+  margin-block: 2rem 1.5rem;
+}
+.container .container-main .counters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 1.125rem 1rem;
+  margin-block-end: 1.5rem;
+}
+.container .container-main .counters h3 {
+  margin-block-end: 0.5rem;
+}
+.container .container-main > :last-child > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: start;
+  gap: 1.25rem;
+}
+.container .container-main > :last-child > * + * {
+  margin-block-start: 1rem;
+}
+@media screen and (min-width: 767px) {
+  .container {
+    --padding: 12.125rem;
+    padding-block-start: 8.75rem;
+  }
+  .container .searchbar {
+    justify-content: start;
+    padding-inline: 2rem 0.625rem;
+    padding-block: 0.625rem;
+    margin-block-end: 1.5rem;
+  }
+  .container .searchbar input {
+    width: 15.875rem;
+  }
+  .container .container-main {
+    padding: 2.5rem;
+  }
+  .container .container-main > :first-child {
+    gap: 2.5rem;
+    width: 100%;
+  }
+  .container .container-main > :first-child #iscription {
+    margin-block-start: 0.375rem;
+  }
+  .container .container-main > :first-child #username {
+    margin-block-start: 5px;
+  }
+  .container .container-main #bio {
+    margin-block: 1.5rem 2rem;
+  }
+  .container .container-main .counters {
+    text-align: left;
+    justify-content: start;
+    gap: 5.3125rem;
+    padding-inline-start: 2rem;
+    margin-block-end: 1.875rem;
+  }
+  .container .container-main > :last-child {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1.125rem;
+  }
+  .container .container-main > :last-child > div:nth-child(2) {
+    order: 3;
+  }
+  .container .container-main > :last-child > div:nth-child(4) {
+    order: 3;
+  }
+  .container .container-main > :last-child > * + * {
+    margin-block-start: 0;
+  }
+}
+@media screen and (min-width: 998px) {
+  .container {
+    padding-block-start: 0;
+  }
+  .container .card-result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    align-items: end;
+  }
+  .container .container-main {
+    width: 30rem;
+    padding-inline: 0;
+    margin-inline-end: 3rem;
+  }
+  .container .container-main .profile-pic-box {
+    position: absolute;
+    inset: 2.5rem 0 0 2.5rem;
+    height: fit-content;
+    width: fit-content;
+  }
+  .container .container-main > :first-child > :last-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+  }
+  .container .container-main > :first-child > :last-child h1,
+  .container .container-main > :first-child > :last-child p {
+    white-space: no-wrap;
+  }
+  .container .container-main > :first-child > :last-child p {
+    margin-left: auto;
+  }
+  .container .container-main .counters {
+    margin-block-end: 2.3125rem;
+  }
+  .container .container-main > :last-child {
+    column-gap: 3.75rem;
+  }
+  .container .container-main > :last-child span {
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+  }
+  .container .container-main > :last-child span:hover {
+    text-decoration: underline;
+  }
+}
+
+.box-shadow-active {
+  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.2);
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,190 @@
+@use 'variables' as *;
+//Components
+.container{
+  --padding: 3rem;
+  width: min(100% - var(--padding), 45.625rem);
+  padding-block-start: $fs-32;
+
+    .header{
+      @include flex-between;
+        .color-mode{
+          @include flex-row;
+          gap: $fs-16;
+            #sun{
+              display: none;
+            }
+        }
+    }
+
+    .searchbar{
+      margin-block: 2.1875rem $fs-16;
+      @include flex-row;
+      gap: 0.5625rem;
+      padding-block: 0.40625rem 0.46875rem;
+      padding-inline: $fs-16 0.3rem;
+      justify-content: space-between;
+      position: relative;
+        input{
+          width: 11.5rem;
+        }
+    }
+
+    .container-main{
+      padding: $fs-32 $fs-24 3.125rem $fs-24;
+      text-align: left;
+        & > :first-child{
+          @include flex-row;
+          gap: 1.25rem;
+          justify-content: start;
+            #iscription{
+              margin-block-start: 0.375rem;
+            }
+        }
+
+        #bio{
+          margin-block: $fs-32 $fs-24;
+        }
+
+        .counters{
+          @include flex-row;
+          text-align: center;
+          gap: $fs-24;
+          padding: $fs-18 $fs-16;
+          margin-block-end: $fs-24;
+            h3{
+              margin-block-end: 0.5rem;
+            }
+        }
+
+        & > :last-child > div{
+          @include flex-row;
+          justify-content: start;
+          gap: 1.25rem;
+        }
+
+        & > :last-child > * + *{
+          margin-block-start: $fs-16;
+        }
+    }
+
+    @media screen and (min-width: 767px) {
+      &{
+        --padding: 12.125rem;
+        padding-block-start: 8.75rem;
+      }
+
+      .searchbar{
+        justify-content: start;
+        padding-inline: $fs-32 0.625rem;
+        padding-block: 0.625rem;
+        margin-block-end: $fs-24;
+          input{
+            width: 15.875rem;
+          }
+      }
+
+      .container-main{
+        padding: 2.5rem;
+          & > :first-child{
+            gap: 2.5rem;
+            width: 100%;
+              #iscription{
+                margin-block-start: 0.375rem;
+              }
+
+              #username{
+                margin-block-start: 5px;
+              }
+          }
+
+          #bio{
+            margin-block: $fs-24 $fs-32;
+          }
+
+          .counters{
+            text-align: left;
+            justify-content: start;
+            gap: 5.3125rem;
+            padding-inline-start: $fs-32;
+            margin-block-end: 1.875rem;
+          }
+
+          & > :last-child{
+            @include grid-column;
+            row-gap: $fs-18;
+              & > div:nth-child(2){
+                order: 3;
+              }
+
+              & > div:nth-child(4){
+                order: 3;
+              }
+          }
+
+          & > :last-child > * + *{
+            margin-block-start: 0;
+          }
+      }
+    }
+
+    @media screen and (min-width: 998px) {
+      &{
+        padding-block-start: 0;
+        .card-result{
+          @include flex-row;
+          flex-direction: column;
+          position: relative;
+          align-items: end;
+          
+        }
+          .container-main{
+            width: 30rem;
+            padding-inline:0;
+            margin-inline-end: 3rem;
+              .profile-pic-box{
+                position: absolute;
+                inset: 2.5rem 0 0 2.5rem;
+                height: fit-content;
+                width: fit-content;
+              }
+
+              & > :first-child > :last-child{
+                @include flex-row;
+                align-items: start;
+                justify-content: start;
+                width: 100%;
+                  h1,
+                  p{
+                    white-space: no-wrap;
+                  }
+
+                  p{
+                    margin-left: auto;
+                  }
+              }
+
+              .counters{
+                margin-block-end: 2.3125rem;
+              }
+
+              & > :last-child{
+                column-gap: 3.75rem;
+                  span{
+                    white-space: nowrap;
+                    cursor: pointer;
+                    text-decoration: none;
+                    transition: text-decoration 0.3s ease;
+                      &:hover{
+                        text-decoration: underline;
+                      }
+                  }
+              }
+          }
+      }
+    }
+
+}
+
+.box-shadow-active{
+  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.20);
+}
