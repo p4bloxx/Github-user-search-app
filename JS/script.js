@@ -1,6 +1,7 @@
 const toggleTheme = document.querySelector('#light-dark');
 const input = document.querySelector('input');
 const inputSearch = document.querySelector('#search');
+const form = document.querySelector('form');
 const searchBar = document.querySelector('.searchbar');
 const cardResult = document.querySelector('.card-result');
 const errorMsg = document.querySelector('#error-msg');
@@ -17,6 +18,7 @@ const local = document.querySelector('#location');
 const website = document.querySelector('#website a');
 const twitterProfile = document.querySelector('#twitter-profile');
 const company = document.querySelector('#company');
+console.log(toggleTheme)
 
 //to switch light/dark mode and detected user's preference
 function toggleDarkMode() {
@@ -27,6 +29,7 @@ function toggleDarkMode() {
     searchBar.classList.remove('box-shadow-active')
     toggleTheme.firstElementChild.style.display = 'inline'
     toggleTheme.lastElementChild.style.display = 'none'
+    toggleTheme.childNodes[0].textContent = 'LIGHT'
   } else if (document.documentElement.classList.contains("dark")) {
     document.documentElement.classList.remove("dark")
     document.documentElement.classList.add("light")
@@ -34,6 +37,7 @@ function toggleDarkMode() {
     searchBar.classList.add('box-shadow-active')
     toggleTheme.firstElementChild.style.display = 'none'
     toggleTheme.lastElementChild.style.display = 'inline'
+    toggleTheme.childNodes[0].textContent = 'DARK'
   }
 }
 
@@ -43,12 +47,14 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
   searchBar.classList.remove('box-shadow-active')
   toggleTheme.firstElementChild.style.display = 'inline'
   toggleTheme.lastElementChild.style.display = 'none'
+  toggleTheme.childNodes[0].textContent = 'LIGHT'
 } else {
   document.documentElement.classList.add("light")
   cardResult.classList.add('box-shadow-active')
   searchBar.classList.add('box-shadow-active')
   toggleTheme.firstElementChild.style.display = 'none'
   toggleTheme.lastElementChild.style.display = 'inline'
+  toggleTheme.childNodes[0].textContent = 'DARK'
 }
 
 toggleTheme.addEventListener('click', toggleDarkMode)
@@ -161,7 +167,7 @@ function startSearch(currentInput){
   newData()
 }
 
-inputSearch.addEventListener('click', () => {
+form.addEventListener('submit', () => {
   let currentInput = input.value;
   startSearch(currentInput)
   input.value = ''

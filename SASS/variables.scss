@@ -77,7 +77,8 @@ ol {
   list-style: none;
 }
 
-button{
+button,
+.submit{
   background: none;
   border: none;
   margin: 0;
@@ -85,12 +86,13 @@ button{
   display: block;
   color: rgb(255, 255, 255);
   transition: background-color 0.3s ease;
-    @media screen and (min-width: 998px) {
-      cursor: pointer;
-      &:hover:not(#light-dark){
-        background-color: var(--blue-hover);
-      }
-    }
+  cursor: pointer;
+}
+
+@media screen and (min-width: 998px) {
+  .submit:hover{
+    background-color: var(--blue-hover);
+  }
 }
 
 /* Set core body defaults */
@@ -281,7 +283,7 @@ h3{
     }
 }
 
-input,
+input:not(#search),
 ::placeholder{
   font-size: clamp(0.8125rem, 0.3443rem + 1.6287vw, 1.125rem);
   background: none;
@@ -313,6 +315,9 @@ input{
   pointer-events: none;
   position: absolute;
   right: calc(6rem + 5vw);
+  @media screen and (max-width: 767px) {
+    top: -1.7rem;
+  }
     @media screen and (min-width: 998px) {
       right: 8rem;
     }
@@ -322,7 +327,7 @@ input{
   width: clamp(4.375rem, -1.1259rem + 17.6030vw, 7.3125rem);
 }
 
-button:not(#light-dark){
+#search{
   padding-block: 0.75rem $fs-13;
   padding-inline: $fs-16;
     &:focus-visible{

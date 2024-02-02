@@ -21,12 +21,18 @@
       @include flex-row;
       gap: 0.5625rem;
       padding-block: 0.40625rem 0.46875rem;
-      padding-inline: $fs-16 0.3rem;
+      padding-inline: $fs-16 0.5rem;
       justify-content: space-between;
       position: relative;
-        input{
-          width: 11.5rem;
+
+        form{
+          @include flex-between;
+          width: 100%;
         }
+
+        /* input{
+          width: 11.5rem;
+        } */
     }
 
     .container-main{
@@ -74,11 +80,11 @@
       }
 
       .searchbar{
-        justify-content: start;
+        justify-content: stretch;
         padding-inline: $fs-32 0.625rem;
         padding-block: 0.625rem;
         margin-block-end: $fs-24;
-          input{
+          input:not(#search){
             width: 15.875rem;
           }
       }

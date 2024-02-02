@@ -60,7 +60,8 @@ ol {
   list-style: none;
 }
 
-button {
+button,
+.submit {
   background: none;
   border: none;
   margin: 0;
@@ -68,16 +69,14 @@ button {
   display: block;
   color: rgb(255, 255, 255);
   transition: background-color 0.3s ease;
+  cursor: pointer;
 }
+
 @media screen and (min-width: 998px) {
-  button {
-    cursor: pointer;
-  }
-  button:hover:not(#light-dark) {
+  .submit:hover {
     background-color: var(--blue-hover);
   }
 }
-
 /* Set core body defaults */
 body {
   min-height: 100vh;
@@ -246,7 +245,7 @@ h3 {
   fill: #90A4D4;
 }
 
-input,
+input:not(#search),
 ::placeholder {
   font-size: clamp(0.8125rem, 0.3443rem + 1.6287vw, 1.125rem);
   background: none;
@@ -279,6 +278,11 @@ input {
   position: absolute;
   right: calc(6rem + 5vw);
 }
+@media screen and (max-width: 767px) {
+  #error-msg {
+    top: -1.7rem;
+  }
+}
 @media screen and (min-width: 998px) {
   #error-msg {
     right: 8rem;
@@ -289,15 +293,15 @@ input {
   width: clamp(4.375rem, -1.1259rem + 17.603vw, 7.3125rem);
 }
 
-button:not(#light-dark) {
+#search {
   padding-block: 0.75rem 0.8125rem;
   padding-inline: 1rem;
 }
-button:not(#light-dark):focus-visible {
+#search:focus-visible {
   outline: 2px solid var(--red);
 }
 @media screen and (min-width: 767px) {
-  button:not(#light-dark) {
+  #search {
     padding-inline: 1.5rem;
     margin-inline-start: auto;
   }
@@ -337,12 +341,19 @@ input:focus {
   justify-content: center;
   gap: 0.5625rem;
   padding-block: 0.40625rem 0.46875rem;
-  padding-inline: 1rem 0.3rem;
+  padding-inline: 1rem 0.5rem;
   justify-content: space-between;
   position: relative;
+  /* input{
+    width: 11.5rem;
+  } */
 }
-.container .searchbar input {
-  width: 11.5rem;
+.container .searchbar form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
 }
 .container .container-main {
   padding: 2rem 1.5rem 3.125rem 1.5rem;
@@ -389,12 +400,12 @@ input:focus {
     padding-block-start: 8.75rem;
   }
   .container .searchbar {
-    justify-content: start;
+    justify-content: stretch;
     padding-inline: 2rem 0.625rem;
     padding-block: 0.625rem;
     margin-block-end: 1.5rem;
   }
-  .container .searchbar input {
+  .container .searchbar input:not(#search) {
     width: 15.875rem;
   }
   .container .container-main {
